@@ -1,8 +1,11 @@
 <?php
 require(__DIR__ . '/bootstrap.php');
 use Httpful\Request;
-$uri = '[Hostname]/codedx';
-$template = Request::init()->addHeader('API-Key','[token/key]');
+
+$cred_file = dirname(__FILE__) . '/settings.json';
+$uri = $cred->uri;
+$token = $cred->token;
+$template = Request::init()->addHeader('API-Key', $token);
 
 $cache_file = dirname(__FILE__) . '/api-cache.array';
 $json_file = dirname(__FILE__) . '/api-cache.json';
